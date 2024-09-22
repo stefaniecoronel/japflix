@@ -43,7 +43,7 @@ function showMovies(movies){
    moviesList.innerHTML = "";
    movies.forEach( (element)=>{
     moviesList.innerHTML += `  
-    <a href="#" class="list-group-item list-group-item-action">
+    <a href="#" class="list-group-item list-group-item-action custom-color">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">${element.title}</h5>
         <small class="text-muted">${element.vote_average}</small> 
