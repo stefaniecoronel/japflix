@@ -1,7 +1,6 @@
 let moviesArray = [];
 let moviesList = document.getElementById('lista')
 
-
 document.addEventListener('DOMContentLoaded', function(){
     let peliculasJSON = 'https://japceibal.github.io/japflix_api/movies-data.json'
     getJSONData(peliculasJSON).then(function(respObj){
@@ -42,11 +41,78 @@ function searchMovies(searchInput, array){
 function showMovies(movies){
    moviesList.innerHTML = "";
    movies.forEach( (element)=>{
+    let stars = element.vote_average/2
+    console.log(stars)
+    let starRating =""
+    if (stars<=1.2){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>1.2 && stars<=1.7){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa-regular fa-star-half-stroke checked"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>1.7 && stars<=2.2){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>2.2 && stars<=2.7){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa-regular fa-star-half-stroke checked"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>2.7 && stars<=3.2){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>3.2 && stars<= 3.7){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa-regular fa-star-half-stroke checked"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>3.7 && stars<= 4.2){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star"></i>
+      `
+    } else if (stars>4.2 && stars<= 4.7){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa-regular fa-star-half-stroke checked"></i>
+      `
+    } else if (stars>4.7){
+      starRating=`<i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      <i class="fa fa-star checked"></i>
+      `
+    }
     moviesList.innerHTML += `  
     <a href="#" class="list-group-item list-group-item-action custom-color">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">${element.title}</h5>
-        <small class="text-muted">${element.vote_average}</small> 
+        <small class="text-muted">${starRating}</small> 
       </div>
       <p class="mb-1">${element.tagline}</p>
     </a>
@@ -55,6 +121,14 @@ function showMovies(movies){
   )
 }
 
+//<div class="rating">
+       
+       //<i class="fa fa-star checked"></i>
+        
+        //<i class="fa fa-star"></i>
+        //< <i class="fa fa-star"></i>
+        //<<i class="fa fa-star"></i>
+         //<<i class="fa-regular fa-star-half-stroke checked"></i> <!-- 4.5 estrellas --></div>
 
 
 let getJSONData = function(url){
