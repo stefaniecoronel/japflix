@@ -121,15 +121,6 @@ function showMovies(movies){
   )
 }
 
-//<div class="rating">
-       
-       //<i class="fa fa-star checked"></i>
-        
-        //<i class="fa fa-star"></i>
-        //< <i class="fa fa-star"></i>
-        //<<i class="fa fa-star"></i>
-         //<<i class="fa-regular fa-star-half-stroke checked"></i> <!-- 4.5 estrellas --></div>
-
 
 let getJSONData = function(url){
     let result = {};
