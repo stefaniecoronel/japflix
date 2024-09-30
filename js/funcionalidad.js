@@ -109,7 +109,7 @@ function showMovies(movies){
       `
     }
     moviesList.innerHTML += `  
-    <a href="#" class="list-group-item list-group-item-action custom-color">
+    <a onclick="generateOffcanvas(${element.id})" href="#offcanvasMovie" data-bs-toggle="offcanvas" role="button" class="list-group-item list-group-item-action custom-color">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">${element.title}</h5>
         <small class="text-muted">${starRating}</small> 
@@ -120,6 +120,39 @@ function showMovies(movies){
    }
   )
 }
+
+let offcanvasTitle= document.getElementById('offcanvas-title')
+let offcanvasBody = document.getElementById('offcanvas-body-movies')
+
+function generateOffcanvas (id) {
+  
+  let clickedMovie = moviesArray.filter(element => element.id == id)
+  console.log(clickedMovie)
+  if (clickedMovie.length>0){
+    offcanvasTitle.innerHTML= `
+  <h5 class="offcanvas-title" id="offcanvasMovieLabel">${clickedMovie[0].title}</h5>
+  `
+  offcanvasBody.innerHTML =`
+  <div> 
+  ${clickedMovie[0].overview}
+  </div>
+  <div class="dropdown mt-3 overflow-visible">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    More
+   </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>`
+  }
+  
+
+}
+
+
+
 
 
 let getJSONData = function(url){
