@@ -136,7 +136,7 @@ function generateOffcanvas (id) {
   <div> 
   ${clickedMovie[0].overview}
   </div>
-  <div class="dropdown mt-3 overflow-visible">
+  <div class="dropdown mt-3">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                     More
    </button>
