@@ -129,21 +129,37 @@ function generateOffcanvas (id) {
   let clickedMovie = moviesArray.filter(element => element.id == id)
   console.log(clickedMovie)
   if (clickedMovie.length>0){
+    let genresArray = clickedMovie[0].genres
+    let genres = ""
+    for (let i = 0; i< genresArray.length; i++) {
+      if (i<genresArray.length-1){
+        genres += `${genresArray[i].name} - `
+      }
+      else {
+        genres +=`${genresArray[i].name}`
+      }
+      
+    }
+    let date = clickedMovie[0].release_date
+    let year = date.slice(0,4)
     offcanvasTitle.innerHTML= `
   <h5 class="offcanvas-title" id="offcanvasMovieLabel">${clickedMovie[0].title}</h5>
   `
   offcanvasBody.innerHTML =`
   <div> 
+  <small class="text-muted">${genres}</small> 
+  <br>
   ${clickedMovie[0].overview}
   </div>
   <div class="dropdown mt-3">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                    More
+      More
    </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><a class="dropdown-item disabled" href="#">Year: ${year} </a></li>
+      <li><a class="dropdown-item disabled" href="#">Runtime: ${clickedMovie[0].runtime} min</a></li>
+      <li><a class="dropdown-item disabled" href="#">Budget: USD ${clickedMovie[0].budget}</a></li>
+      <li><a class="dropdown-item disabled" href="#">Revenue: USD ${clickedMovie[0].revenue}</a></li>
     </ul>
   </div>`
   }
