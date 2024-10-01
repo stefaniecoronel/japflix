@@ -110,7 +110,7 @@ function showMovies(movies){
     }
     moviesList.innerHTML += `  
     <a onclick="generateOffcanvas(${element.id})" href="#offcanvasMovie" data-bs-toggle="offcanvas" role="button" class="list-group-item list-group-item-action custom-color">
-      <div class="d-flex w-100 justify-content-between">
+      <div class="d-flex w-100 justify-content-between flex-column flex-sm-row">
         <h5 class="mb-1">${element.title}</h5>
         <small class="text-muted">${starRating}</small> 
       </div>
